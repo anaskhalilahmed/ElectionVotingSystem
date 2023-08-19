@@ -1,0 +1,72 @@
+{# this file allows the user for casting a vote under the election limit date time #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- online link of boostrap3 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="func1()">
+    <div class="container">
+        <br>
+        <p style="font-size: 20px;text-align: center;border-bottom: 1px solid gray;">
+            WELCOME TO THE E-POLLING ELECTION SYSTEM OF {{country_name}} AND OVERSEAS {{country_name}}.....
+        </p>
+        <br><br>
+        <div class="row">
+            <div class="col-md-6" style="border-right: 5px solid black;font-size:15px;color:brown">
+                <p>POLLING TIME WILL BE OVER AFTER THE FOLLOWING DATE AND TIME</p>
+                <p id="datetimevalue">{{datetime}}</p>
+            </div>
+            <div class="col-md-6">
+                <form action="/vote" method="post" id="myForm">
+                    <input style="display:none" type="text" name="currentdatetime_onvote" id="currentdatetime_onvote">
+                    <button class="btn btn-block btn-info" type="submit">VOTE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Assuming you have a function to handle form submission
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Set a value in the input element with id "username"
+            const datetimeInput = document.getElementById('currentdatetime_onvote');
+            datetimeInput.value = new Date(); 
+
+            // Now submit the form programmatically
+            const form = document.getElementById('myForm');
+            form.submit();
+        }
+        // Add a submit event listener to the form
+        const form = document.getElementById('myForm');
+        form.addEventListener('submit', handleSubmit);
+    
+    
+        function func(){
+            var a=new Date();
+            document.getElementById("timezoneoffset").value=a.getTimezoneOffset();
+        }
+
+        function func1(){
+            var getdate=document.getElementById("datetimevalue").innerText;
+            var a=new Date(getdate);
+            a.toLocaleString();
+            document.getElementById("datetimevalue").innerText=a;
+        }
+    </script>
+    
+
+
+
+
+
+
+</body>
+</html>

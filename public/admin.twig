@@ -1,0 +1,32 @@
+{# form this file an admin can set a election over date time for the any country time zone #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- online link of boostrap3 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <body> 
+    <div class="container">
+        <br><br>
+        <p style="font-size: medium;">PLEASE SELECT AN ELECTION DATE AND TIME....</p>
+        <form action="/save_electiondatetime" method="post">
+            <input type="datetime-local" name="datetimepicker" class="form-control"><br>
+            {# Displaying the country time zones fetching from the server using requests package #}
+            <select name="rqstdata" class="form-control">
+                <option disabled selected value="">Please select the TimeZone</option>
+                {% for getting_zones in data %}
+                    <option value="{{getting_zones.gmtOffset}},{{getting_zones.countryName}}">{{getting_zones.countryName}},{{getting_zones.zoneName}},{{getting_zones.gmtOffset}}</option>
+                {% endfor %}
+            </select><br>
+            {# <input style="display: none;" type="number" id="timezoneoffset" name="timezoneoffset" class="form-control">#}
+            <button class="btn btn-block btn-info">OK</button> 
+        </form>
+    </div>
+
+</body>
+</html>

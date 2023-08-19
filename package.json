@@ -1,0 +1,19 @@
+{
+  "name": "dateporject",
+  "version": "1.0.0",
+  "description": "dateporject",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "anas khalial",
+  "license": "ISC",
+  "dependencies": {
+    "connect-mongo": "^4.4.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3",
+    "requests": "^0.3.0",
+    "twig": "^1.15.4"
+  }
+}
